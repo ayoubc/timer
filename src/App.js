@@ -67,7 +67,7 @@ class App extends Component {
 
         return (
             <div className="timer">
-                <div className="close-btn-container"><span className="close">&times;</span></div>
+                {/* <div className="close-btn-container"><span className="close">&times;</span></div> */}
                 <span> {this.displayTime(this.state)} </span>
                 <hr />
                 <div className="btn-container">

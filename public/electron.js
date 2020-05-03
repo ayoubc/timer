@@ -10,22 +10,18 @@ const isDev = require('electron-is-dev');
 let mainWindow;
 
 function createWindow() {
+    electron.Menu.setApplicationMenu(false);
     mainWindow = new BrowserWindow({
         width: 240,
         height: 170,
-        // resizable: false, 
+        fullscreen: false,
+        resizable: false, 
         alwaysOnTop: true,
-        frame: false,
-        webPreferences: {
-            preload: path.join(__dirname, "render.js")
-        }
+        // frame: false
     });
-    mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../index.html')}`);
+    mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     mainWindow.on('closed', () => mainWindow = null);
-    //   console.log(remote.getCurrentWindow());
-    // remote.getCurrentWindow().close();
-
-    console.log(electron.screen.getAllDisplays());
+    // mainWindow.setMenuBarVisibility(false);
 }
 
 app.on('ready', createWindow);
