@@ -13,20 +13,30 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-app-region: drag;
 }
+
 .timer {
   border: 7px solid #13353a;
-  /* margin: 20px auto 10px auto; */
-  width: 270px;
+  margin: 0 auto;
+  width: 230px;
   height: 120px;
-  border-radius: 50px;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  -webkit-app-region: no-drag;
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+.timer >span {
   font-size: 40px;
   font-family: monospace;
-  flex-direction: column;
   color: #fff;
 }
 
@@ -48,9 +58,29 @@ button {
 
 hr{
   margin: 0;
-  width: 65%;
+  width: 75%;
   background: #13353a;
   height: 4px;
   border-width: 0;
   border-radius: 4px;
+}
+
+.close-btn-container {
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  text-align: right;
+  top: -5px;
+  width: 100%;
+}
+
+.close {
+  font-weight: 900;
+  position: relative;
+  right: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.btn-container {
+  margin-top: 6px;
 }

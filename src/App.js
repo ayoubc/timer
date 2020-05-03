@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-    
+
     constructor() {
         super();
         this.state = {
@@ -67,9 +67,10 @@ class App extends Component {
 
         return (
             <div className="timer">
+                <div className="close-btn-container"><span className="close">&times;</span></div>
                 <span> {this.displayTime(this.state)} </span>
-                <hr/>
-                <div>
+                <hr />
+                <div className="btn-container">
                     <button onClick={this.handelClick}>{this.state.actionName}</button>
                     <button onClick={this.restTimer}>reset</button>
                 </div>
