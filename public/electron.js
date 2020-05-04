@@ -1,11 +1,10 @@
 const electron = require('electron');
-const ipc = require('electron').ipcMain;
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
-const isDev = require('electron-is-dev');
+// const isDev = require('electron-is-dev');
 
 let mainWindow;
 
@@ -19,9 +18,13 @@ function createWindow() {
         alwaysOnTop: true,
         // frame: false
     });
-    mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+    const startUrl = process.env.ELECTRON_START_URL || url.format({
+        pathname: path.join(__dirname, '/../build/index.html'),
+        protocol: 'file:',
+        slashes: true
+    });
+    mainWindow.loadURL(startUrl);
     mainWindow.on('closed', () => mainWindow = null);
-    // mainWindow.setMenuBarVisibility(false);
 }
 
 app.on('ready', createWindow);
@@ -39,7 +42,3 @@ app.on('activate', () => {
     }
 });
 
-ipc.on('invokeAction', function (event, data) {
-    console.log(data);
-    event.sender.send('actionReply', 'data processed');
-});

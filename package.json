@@ -8,8 +8,6 @@
     "@testing-library/user-event": "^7.2.1",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
-    "electron": "^8.2.5",
-    "electron-builder": "^22.6.0",
     "electron-is-dev": "^1.2.0",
     "electron-packager": "^14.2.1",
     "lodash.shuffle": "^4.2.0",
@@ -20,12 +18,22 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "react-build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-dev": "concurrently \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
-    "elec-build": "electron-packager . timer"
+    "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "electron-build": "electron-builder",
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && npm run electron-build",
+    "elec-build": "electron-packager . timer",
+    "electron": "electron ."
   },
+  "description": "timer app for time management",
+  "author": "chegraoui ayoub",
+  "build": {
+    "appId": "com.chegraoui.org"
+  },
+  "homepage": "./",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -41,5 +49,9 @@
       "last 1 safari version"
     ]
   },
-  "main": "public/electron.js"
+  "main": "public/electron.js",
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0"
+  }
 }
