@@ -17,3 +17,4 @@ You will also see any lint errors in the console.
 
 ### `npm run build`
 To build the binaries for desktop app. <br />
+The executable app will be in the dist folder when the script is finished.
