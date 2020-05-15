@@ -20,4 +20,4 @@ To build the binaries for desktop app. <br />
 The executable app will be in the dist folder when the script is finished.
 
 ### Screenshot
-![](public/assets/images/screen.png)
+![](images/screen.png)
