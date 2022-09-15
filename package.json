@@ -1,20 +1,12 @@
 {
-  "name": "new-app",
+  "name": "timer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "concurrently": "^5.2.0",
-    "cross-env": "^7.0.2",
-    "electron-is-dev": "^1.2.0",
-    "electron-packager": "^14.2.1",
     "lodash.shuffle": "^4.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
-    "wait-on": "^4.0.2"
+    "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,9 +16,11 @@
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "electron-build": "electron-builder",
     "release": "npm run react-build && electron-builder --publish=always",
-    "build": "npm run react-build && npm run electron-build",
+    "build": "npm run react-build && npm run elec-build",
     "elec-build": "electron-packager . timer",
-    "electron": "electron ."
+    "electron": "electron .",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix --ext .js ./src"
   },
   "description": "timer app for time management",
   "author": "chegraoui ayoub",
@@ -52,6 +46,13 @@
   "main": "public/electron.js",
   "devDependencies": {
     "electron": "^15.5.5",
-    "electron-builder": "^22.6.0"
+    "electron-builder": "^22.6.0",
+    "cross-env": "^7.0.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "concurrently": "^5.2.0",
+    "electron-packager": "^14.2.1",
+    "wait-on": "^4.0.2"
   }
 }

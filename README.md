@@ -1,8 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Timer
 
-This sample app is a timer for time management puposes. When you are working on a task you use it so that you can have control
-on how much time you spend in it. The app is desktop app developed using [ElectronJS](https://www.electronjs.org/).
+This sample app is a timer for time management puposes. When you are working on a task, you use it so that you can have control
+on how much time you spend on it. The app is desktop app developed using [ElectronJS](https://www.electronjs.org/).
+
 ## Available Scripts
 
 In the project directory, you can run:
