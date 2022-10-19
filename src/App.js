@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 
-
 import './App.css';
+
+const MAX_MINUTES = 120;
+const DEFAULT_MINUTES = 2;
 
 class App extends Component {
 
     constructor() {
         super();
         this.state = {
-            minutes: 0,
+            minutes: DEFAULT_MINUTES,
             seconds: 0,
-            hours: 0,
             intervalId: null,
-            actionName: "start"
+            actionName: "start",
+            choosenMinutes: DEFAULT_MINUTES
         }
     }
 
@@ -20,17 +22,20 @@ class App extends Component {
         this.setState({
             actionName: "stop",
             intervalId: setInterval(() => {
-                let { minutes, seconds, hours } = this.state;
-                seconds++;
-                minutes += (seconds >= 60);
-                seconds %= 60;
-                hours += (minutes >= 60);
-                minutes %= 60;
+                let { minutes, seconds, intervalId } = this.state;
+                if(seconds == 0 && minutes == 0) {
+                    this.restTimer();
+                    return;
+                }
+                if(seconds == 0) {
+                    minutes --;
+                    seconds = 60;
+                }
+                seconds --;
                 this.setState({
                     minutes: minutes,
-                    seconds: seconds,
-                    hours: hours
-                })
+                    seconds: seconds
+                });
             }, 1000)
         })
     }
@@ -48,19 +53,17 @@ class App extends Component {
 
     restTimer = () => {
         this.stopTimer();
+        const { choosenMinutes } = this.state;
         this.setState({
-            minutes: 0,
+            minutes: choosenMinutes,
             seconds: 0,
-            hours: 0,
         })
     }
 
-    displayTime({ hours, minutes, seconds }) {
-
-        if (hours.toString().length <= 1) hours = "0" + hours;
+    displayTime({ minutes, seconds }) {
         if (minutes.toString().length <= 1) minutes = "0" + minutes;
         if (seconds.toString().length <= 1) seconds = "0" + seconds;
-        return hours + ":" + minutes + ":" + seconds
+        return minutes + ":" + seconds
     }
 
     render() {
